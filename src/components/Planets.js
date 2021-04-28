@@ -20,7 +20,10 @@ const Planets = () => {
       {status === "loading" && <div>loading data</div>}
       {status === "success" && (
         <div>
-          <button onClick={() => setPage((old) => Math.max(old - 1, 1))}>
+          <button
+            onClick={() => setPage((old) => Math.max(old - 1, 1))}
+            disabled={page === 1}
+          >
             Previous Page
           </button>
           <span>{page}</span>
@@ -28,6 +31,7 @@ const Planets = () => {
             onClick={() =>
               setPage((old) => (!data || !data.next ? old : old + 1))
             }
+            disabled={!data || !data.next}
           >
             Next Page
           </button>
